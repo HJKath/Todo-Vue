@@ -19,24 +19,34 @@ export default {
     }
   },
   methods: {
+    // ### addItem : 입력 ###
     addItem() {
       console.log(">>> add item = " + this.todoValue);
+
       if (this.todoValue != undefined && this.todoValue.length > 0) {
         if (localStorage.getItem(this.todoValue) != null) {
           alert("이미 등록 된 할 일 입니다.");
           return;
         }
 
-        localStorage.setItem(this.todoValue, this.todoValue);
-        this.passedData.push(this.todoValue);
-        this.todoValue = '';
+        var value = this.todoValue && this.todoValue.trim();
+        localStorage.setItem(value, value);
+        this.passedData.push(value);
+
+        // this.todoValue = '';
+        this.clearForm();
       }
     }
+    // ### clearForm : 입력 데이터 초기화 ###
+    ,clearForm() {
+      this.todoValue = '';
+    }
+
   },
 }
 </script>
 
-<style>
+<style lang="css">
 .wrap-input {
   display: flex;
   height: 36px;

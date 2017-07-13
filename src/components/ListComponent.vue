@@ -28,26 +28,19 @@
 
 <script>
 export default {
-  // name: 'listComp',
   props: ['passedData']
   ,data () {
     return {
-      msg: 'this is a list component'
+      // msg: 'this is a list component'
     }
   }
   ,methods: {
     removeItem(index) {
       console.log(index);
-      var key = this.passedData[index];
-      localStorage.removeItem(key);
-      this.passedData.splice(index, 1);
-    }
-  },
-  watch: {
-    passedData: {
-      handler: function(todo) {
-        console.log("changed");
-      }
+      // var key = this.passedData[index];
+      // localStorage.removeItem(key);
+      // this.passedData.splice(index, 1);
+      this.$emit('removeItem', index);
     }
   }
 }
@@ -81,7 +74,6 @@ export default {
     line-height: 24px;
     border: none;
     border-radius: 50%;
-    /*background-color: #3FBDE3;*/
     background-color: RGBA(63, 189, 227, 0.6);
     color:#fff;
   }
